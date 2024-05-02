@@ -27,7 +27,7 @@ public class Target : MonoBehaviour
         Instantiate(TargetPrefab, new Vector3(x,y,0), Quaternion.identity);
 
         Destroy(gameObject);
-        
+        Hud.score += 1;
     }
 
 }
