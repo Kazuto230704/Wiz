@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class Wizard : MonoBehaviour
 {
+    public static Wizard instance;
     public GameObject fireballPrefab;
-    private float counter = 5;
     private Vector3 lastMovement = Vector3.right;
     public static Vector3 movement;
-
-    //private float mptimer = 4;
-
+    public float timer = 0;
     private Animator animator;
+    public stats stats;
 
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        stats = new stats();
+        instance = this;
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class Wizard : MonoBehaviour
 
         movement = movement.normalized;
 
-        transform.position = transform.position + movement * Time.deltaTime * 2;
+        transform.position = transform.position + movement * Time.deltaTime * stats.speed;
 
         if (movement.y != 0 || movement.x != 0)
         {
@@ -56,18 +57,31 @@ public class Wizard : MonoBehaviour
 
         //GetKomponent<Fireball>().
         // Casting
-        counter += Time.deltaTime;
-        if (counter > 1 && Input.GetKeyDown(KeyCode.Space) && Hud.mp != 0)
+        stats.castTime += Time.deltaTime;
+        
+        if (stats.castTime > 1 && Input.GetKeyDown(KeyCode.Space) && stats.mp != 0)
         {
             GameObject obj = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
             obj.GetComponent<Fireball>().direction = lastMovement;
-            counter = 0;
+            stats.castTime = 0;
             animator.SetBool("Attack", true);
 
-            Hud.mp -= 10;
+            stats.mp -= 10;
+            Hud.mp = stats.mp;
+            
         } else if(Input.GetKeyUp(KeyCode.Space)) animator.SetBool("Attack", false);
 
+        timer += Time.deltaTime;
 
+        if (movement == Vector3.zero){
+            if(stats.mp != stats.max_mp){
+                if (timer > 3){
+                stats.mp += stats.manaReg;
+                Hud.mp = stats.mp;
+                timer = 0;
+                }
+            }
+        }
 
     
     }

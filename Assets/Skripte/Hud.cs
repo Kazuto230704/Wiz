@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -11,14 +12,14 @@ public class Hud : MonoBehaviour
     public TMP_Text Score_Text;
     public TMP_Text MP_Text;
     public TMP_Text HP_Text;
+    public static int hp;
+    public static int mp;
     public static int score = 0;
-    public static int mp = 100;
-    public static int hp = 100;
-    public float timer = 0;
 
     void Start()
     {
-        
+        hp = 100;
+        mp = 100;
     }
 
     // Update is called once per frame
@@ -27,13 +28,5 @@ public class Hud : MonoBehaviour
         Score_Text.text = "Score: " + score;
         MP_Text.text = "MP: " + mp;
         HP_Text.text = "HP: "+ hp;
-
-        timer += Time.deltaTime;
-
-        if (Wizard.movement == Vector3.zero){
-            if (timer > 5){
-                mp += 10;
-            }
-        }
     }
 }

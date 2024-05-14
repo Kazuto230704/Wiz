@@ -243,13 +243,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 796985214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00dbfb1e1d23f3e4f9aba894a047b437, type: 3}
+  m_Script: {fileID: 11500000, guid: 480fc98fb85acb84cad5c6ed3d07bb12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Score_Text: {fileID: 1542944341}
   MP_Text: {fileID: 1319530178}
   HP_Text: {fileID: 1212814161}
-  timer: 0
 --- !u!114 &796985216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,10 +722,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1411313169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3631643278e2ac4a89343ba8bdc26b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 81616a0e0520f334eb62424ef77422a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 4488864500939359483, guid: 8e75660db266e334e8dea1d1e163404b, type: 3}
+  timer: 0
 --- !u!212 &1411313171
 SpriteRenderer:
   m_ObjectHideFlags: 0
